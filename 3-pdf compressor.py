@@ -1,5 +1,3 @@
-# AI was used to explain the code for easy debugging
-
 import os
 import fitz
 

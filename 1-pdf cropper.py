@@ -1,5 +1,3 @@
-# AI was used to explain the code for easy debugging
-
 import os
 import sys
 import traceback
@@ -35,21 +33,21 @@ except Exception as e:
 
 
 # Canvas size and zoom are separate so resizing the preview does not change the PDF itself.
-PREVIEW_BASE_W = 900
-PREVIEW_BASE_H = 700
+PREVIEW_BASE_W = 700
+PREVIEW_BASE_H = 600
 POINT_RADIUS = 6
 NEAR_DIST = 14
 PRESET_COLORS = ["#00A2FF", "#FF7F00", "#2ECC71", "#D6336C", "#8E44AD"]
 ACTIVE_BTN_BG = "#0078D7"
 ACTIVE_BTN_FG = "white"
 
-PREVIEW_MIN_PCT = 40
-PREVIEW_MAX_PCT = 140
-PREVIEW_DEFAULT_PCT = 100
+PREVIEW_MIN_PCT = 15
+PREVIEW_MAX_PCT = 55
+PREVIEW_DEFAULT_PCT = 50
 
-ZOOM_MIN_PCT = 50
-ZOOM_MAX_PCT = 400
-ZOOM_DEFAULT_PCT = 100
+ZOOM_MIN_PCT = 40
+ZOOM_MAX_PCT = 60
+ZOOM_DEFAULT_PCT = 60
 
 PAN_STEP_PX = 5
 
@@ -65,7 +63,7 @@ class PDFCropperGUI:
 
 
         self.preview_pct = PREVIEW_DEFAULT_PCT
-        self.zoom_pct = ZOOM_DEFAULT_PCT
+        self.zoom_pct = 100
 
         self.render_scale = 1.0
         self.image_pix_width = 0
@@ -125,7 +123,7 @@ class PDFCropperGUI:
                                     orient="horizontal", command=self.on_zoom_change)
         self.zoom_scale.set(ZOOM_DEFAULT_PCT)
         self.zoom_scale.pack(side="left", fill="x", expand=False)
-        self.zoom_pct_label = ttk.Label(control_row, text=f"{ZOOM_DEFAULT_PCT}%")
+        self.zoom_pct_label = ttk.Label(control_row, text="100%")
         self.zoom_pct_label.pack(side="left", padx=(6,0))
 
 
@@ -226,11 +224,14 @@ class PDFCropperGUI:
 
     def on_zoom_change(self, val):
         try:
-            pct = int(float(val))
+            slider = float(val)
         except Exception:
-            pct = ZOOM_DEFAULT_PCT
-        self.zoom_pct = pct
-        self.zoom_pct_label.config(text=f"{pct}%")
+            slider = ZOOM_DEFAULT_PCT
+
+        slider = max(ZOOM_MIN_PCT, min(ZOOM_MAX_PCT, slider))
+        # 40 means 10% zoom, while 60 means 100% zoom.
+        self.zoom_pct = 10 + (slider - ZOOM_MIN_PCT) * 90 / (ZOOM_MAX_PCT - ZOOM_MIN_PCT)
+        self.zoom_pct_label.config(text=f"{self.zoom_pct:.0f}%")
         self.clamp_pan()
         self.render_page()
 
@@ -714,9 +715,7 @@ def run_app():
     try:
         root = tk.Tk()
         root.minsize(600, 400)
-        init_w = int(PREVIEW_BASE_W * PREVIEW_DEFAULT_PCT / 100) + 380
-        init_h = int(PREVIEW_BASE_H * PREVIEW_DEFAULT_PCT / 100) + 80
-        root.geometry(f"{init_w}x{init_h}")
+        root.geometry("660x660+0+0")
         app = PDFCropperGUI(root)
         logging.info("Entering mainloop (:")
         root.mainloop()
@@ -730,3 +729,4 @@ if __name__ == "__main__":
     logging.info("TOOL started.")
     run_app()
     logging.info("TOOL finished.")
+

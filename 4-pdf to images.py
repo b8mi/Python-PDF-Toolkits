@@ -1,5 +1,3 @@
-# AI was used to explain the code for easy debugging
-
 from pathlib import Path
 import io
 import sys
