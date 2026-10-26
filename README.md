@@ -47,7 +47,7 @@ This is for PDFs where different pages need different cropping areas. Instead of
 
 **Useful details:** Cropping uses PDF coordinates, so changing the preview zoom doesn't change the saved crop. **Center View** resets the preview position. The WASD movement is intentionally reversed: W moves the page down, S up, A right, and D left. The script writes a local `pdfcd.log` file to help debug errors; that file can include local paths and shouldn't be uploaded to GitHub.
 
-![PDF Cropper window](1.png)
+![PDF Cropper window](screenshots/1.png)
 
 ---
 
@@ -71,7 +71,7 @@ A simple way to put several PDFs into **one file**, without having to manually c
 
 **Useful details:** This combines **whole PDFs**, not selected pages within each PDF. Adding the exact same path again is ignored. The original files are left alone when you save the merged result to a new path.
 
-![PDF Merger window](2.png)
+![PDF Merger window](screenshots/2.png)
 
 ---
 
@@ -138,7 +138,7 @@ Takes multiple images and puts them into a single multi-page PDF. The order you 
 
 **Useful details:** The `.pdf` extension is added automatically if needed. Images are converted to RGB when necessary, so transparency may not look the same in the final PDF. Animated GIFs are not expanded into multiple pages: the script uses the frame that Pillow opens.
 
-![Images to PDF window](5.png)
+![Images to PDF window](screenshots/5.png)
 
 ---
 
