@@ -45,10 +45,9 @@ PREVIEW_MIN_PCT = 15
 PREVIEW_MAX_PCT = 55
 PREVIEW_DEFAULT_PCT = 50
 
-ZOOM_MIN_PCT = 40
-ZOOM_MAX_PCT = 60
-ZOOM_DEFAULT_PCT = 60
-
+ZOOM_MIN_PCT = 100
+ZOOM_MAX_PCT = 500
+ZOOM_DEFAULT_PCT = 100
 PAN_STEP_PX = 5
 
 
@@ -127,7 +126,7 @@ class PDFCropperGUI:
         self.zoom_pct_label.pack(side="left", padx=(6,0))
 
 
-        preview_frame = ttk.LabelFrame(left, text="Preview (PDF)")
+        preview_frame = ttk.LabelFrame(left, text="                     -To navigate in the below window, use the 'WASD' keys-                       ")
         preview_frame.pack(fill="both", expand=False, padx=4, pady=4)
         cw = int(PREVIEW_BASE_W * PREVIEW_DEFAULT_PCT / 100)
         ch = int(PREVIEW_BASE_H * PREVIEW_DEFAULT_PCT / 100)
@@ -228,12 +227,16 @@ class PDFCropperGUI:
         except Exception:
             slider = ZOOM_DEFAULT_PCT
 
+
         slider = max(ZOOM_MIN_PCT, min(ZOOM_MAX_PCT, slider))
-        # 40 means 10% zoom, while 60 means 100% zoom.
-        self.zoom_pct = 10 + (slider - ZOOM_MIN_PCT) * 90 / (ZOOM_MAX_PCT - ZOOM_MIN_PCT)
+
+        # Map slider values 100-500 to actual zoom levels 100%-700%.
+        self.zoom_pct = 100 + (slider - ZOOM_MIN_PCT) * 600 / (ZOOM_MAX_PCT - ZOOM_MIN_PCT)
+
         self.zoom_pct_label.config(text=f"{self.zoom_pct:.0f}%")
         self.clamp_pan()
         self.render_page()
+
 
 
     def show_help(self):
