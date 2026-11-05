@@ -3,7 +3,7 @@ import sys
 import traceback
 import logging
 import math
-
+ 
 
 # Put errors next to the script, useful when the GUI closes unexpectedly.
 LOGFILE = os.path.join(os.path.dirname(__file__), "pdfcd.log")
