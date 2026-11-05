@@ -1,7 +1,7 @@
 from pathlib import Path
 import io
 import sys
-
+ 
 try:
     import fitz
 except ImportError:
