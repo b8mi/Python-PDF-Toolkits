@@ -1,6 +1,6 @@
 import os
 import fitz
-
+ 
 def clean_path(path_string):
     cleaned = path_string.strip()
     # Handle quoted paths pasted from Explorer or the terminal.
