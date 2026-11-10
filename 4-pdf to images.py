@@ -1,18 +1,19 @@
 import io
 import sys
 from pathlib import Path
- 
+from PIL import Image
+
 try:
     import fitz
 except ImportError:
     fitz = None
+ 
 
 try:
     from pdf2image import convert_from_path
 except ImportError:
     convert_from_path = None
 
-from PIL import Image
 
 FORMATS = ["png", "jpg", "jpeg", "tiff", "bmp", "webp"]
 
