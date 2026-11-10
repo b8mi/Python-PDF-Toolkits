@@ -1,6 +1,6 @@
-from pathlib import Path
 import io
 import sys
+from pathlib import Path
  
 try:
     import fitz
@@ -44,8 +44,8 @@ else:
 stem = pdf_path.stem
 
 
-def save_bytes(path: Path, data: bytes):
     # Leave existing page images alone if this was run before.
+def save_bytes(path: Path, data: bytes):
     if path.exists():
         print("skip", path.name)
         return True
