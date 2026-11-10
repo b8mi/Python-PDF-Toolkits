@@ -4,6 +4,7 @@ Five small Python tools for working with PDF files. I made them as separate scri
 
 The scripts are numbered **1 to 5**. Each one works independently: you only need to run the tool you want to use.
 
+
 | Script | Tool | Interface | Description |
 | --- | --- | --- | --- |
 | [`1-pdf cropper.py`](1-pdf%20cropper.py) | PDF Cropper | Desktop GUI | Crop selected pages using reusable presets; remove unwanted pages |
