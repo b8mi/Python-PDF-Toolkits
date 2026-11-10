@@ -1,12 +1,13 @@
 import os
 import fitz
  
+    # Handle quoted paths pasted from Explorer or the terminal.
 def clean_path(path_string):
     cleaned = path_string.strip()
-    # Handle quoted paths pasted from Explorer or the terminal.
     if (cleaned.startswith('"') and cleaned.endswith('"')) or (cleaned.startswith("'") and cleaned.endswith("'")):
         return cleaned[1:-1]
     return cleaned
+
 
 def main():
     print("--- CLI Compressor ---\n")
