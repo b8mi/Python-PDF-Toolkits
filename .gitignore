@@ -1,33 +1,35 @@
 
-# Python temporary files
-__pycache__/
-*.pyc
-*.pyo
-
-# Virtual environments
-.venv/
-venv/
-env/
-
-# Logs and debugging files
-*.log
-.pytest_cache/
-
-# Local settings and secrets
-.env
-.env.*
-!.env.example
-
 # Generated PDFs and converted images
 output/
 outputs/
 temp/
 temporary/
 
+
 # Editor files
 .vscode/
 .idea/
 
+
+# Logs and debugging files
+*.log
+.pytest_cache/
+
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python temporary files
+__pycache__/
+*.pyc
+*.pyo
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
