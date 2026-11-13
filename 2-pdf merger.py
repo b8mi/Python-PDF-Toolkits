@@ -2,7 +2,8 @@ import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from pypdf import PdfWriter
- 
+
+
 class PDFMergerApp:
     def __init__(self, root):
         self.root = root
