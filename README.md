@@ -47,7 +47,7 @@ This tool is for PDFs where different pages need different cropping areas. You c
 
 **Useful details:** Cropping uses PDF coordinates, so changing the preview zoom does not affect the saved crop. **Center View** resets the preview position. The WASD movement is intentionally reversed: W moves the page down, S up, A right, and D left. The script writes a local `pdfcd.log` file to help debug errors; this file may include local paths and should not be uploaded to GitHub.
 
-![PDF Cropper window](1.png)
+![PDF Cropper window](screenshots/1.png)
 
 ---
 
@@ -71,7 +71,7 @@ A quick way to merge a couple of PDFs into **one file** without having to copy a
 
 **Useful details:** This merges **whole PDFs**, not selected pages within them. Adding the exact same file path again is ignored. The original files stay untouched when you save the merged document to a new path.
 
-![PDF Merger window](2.png)
+![PDF Merger window](screenshots/2.png)
 
 ---
 
@@ -138,25 +138,27 @@ Takes a sequence of images and assembles them into a single multi-page PDF. The 
 
 **Useful details:** The `.pdf` extension is added automatically if needed. Images are converted to RGB when necessary, so transparency might not look the same in the final PDF. Animated GIFs are not split into multiple pages: the script uses the frame that Pillow opens.
 
-![Images to PDF window](5.png)
+![Images to PDF window](screenshots/5.png)
 
 ---
 
 ## Repository structure
 
 ```text
-PDF-Tools/
-├── README.md
-├── requirements.txt
+Python-PDF-Toolkits/
+├── screenshots/
+│   ├── .gitkeep
+│   ├── 1.png
+│   ├── 2.png
+│   └── 5.png
 ├── .gitignore
 ├── 1-pdf cropper.py
 ├── 2-pdf merger.py
 ├── 3-pdf compressor.py
 ├── 4-pdf to images.py
 ├── 5-image to pdf.py
-├── 1.png
-├── 2.png
-└── 5.png
+├── README.md
+└── requirements.txt
 ```
 
 ## About This Project
