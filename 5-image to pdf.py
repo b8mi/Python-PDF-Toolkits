@@ -1,3 +1,4 @@
+
 import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog
@@ -9,7 +10,6 @@ class ImagesToPDFApp:
         root.title("Images → PDF (GUI)")
         root.geometry("600x400")
 
-        # Keep full image paths here; the listbox only shows the filenames.
         self.images = []
 
         frame = tk.Frame(root)
@@ -58,7 +58,6 @@ class ImagesToPDFApp:
         if not sel:
             messagebox.showinfo("Remove Selected", "No items selected.")
             return
-        # Delete from the end so earlier indexes do not shift during removal.
         for i in reversed(sel):
             del self.images[i]
             self.listbox.delete(i)
@@ -86,7 +85,6 @@ class ImagesToPDFApp:
         if not sel:
             return
         last_index = self.listbox.size() - 1
-        # Move the lower selected rows first to preserve their relative order.
         for i in reversed(sel):
             if i == last_index:
                 continue
@@ -118,7 +116,6 @@ class ImagesToPDFApp:
         name = simpledialog.askstring("PDF name", "Enter PDF file name (without extension):")
         if not name:
             return
-        # Add the extension only when the user has not typed it already.
         if not name.lower().endswith(".pdf"):
             name = name + ".pdf"
 
@@ -126,7 +123,6 @@ class ImagesToPDFApp:
 
         try:
             opened = []
-            # Convert everything to RGB because Pillow cannot save every image mode as PDF.
             for p in self.images:
                 img = Image.open(p)
                 if img.mode in ("RGBA", "LA") or (hasattr(img, "mode") and img.mode != "RGB"):
@@ -134,7 +130,6 @@ class ImagesToPDFApp:
                 opened.append(img)
 
             first, rest = opened[0], opened[1:]
-            # The first image starts the PDF; the others are appended as later pages.
             first.save(dest, "PDF", save_all=True, append_images=rest)
             messagebox.showinfo("Done", f"PDF created:\n{dest}")
         except Exception as e:
